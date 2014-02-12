@@ -1,0 +1,22 @@
+<template name="rankTable">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Characters</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each monkeys}}
+				<tr>
+					<td>{{ number }}</td>
+					<td>{{ name }}</td>
+					<td>{{ score }}</td>
+					<td>{{ date }}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</template>

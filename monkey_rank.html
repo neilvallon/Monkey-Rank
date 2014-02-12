@@ -1,13 +1,17 @@
 <head>
-  <title>monkey_rank</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Monkey Rank - Survival of the Fittest Tragedy</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 </head>
-
 <body>
-  {{> hello}}
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Monkey Rank</h1>
+			<h3>May the best monkey win.</h3>
+			<h5>and the bodies of the rest be discarded promptly.</h5>
+		</div>
+		{{> rankTable}}
+	</div>
+	
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 </body>
-
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
-</template>

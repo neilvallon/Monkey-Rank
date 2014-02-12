@@ -1,19 +1,35 @@
-if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-    return "Welcome to monkey_rank.";
-  };
+Monkeys = new Meteor.Collection("monkeys");
+Counters = new Meteor.Collection("counters");
 
-  Template.hello.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
-    }
-  });
+
+function getNextSequence(name) {
+	var ret = Counters.findOne({ _id: name });
+	Counters.update({ _id: name }, { $inc: { seq: 1 } });
+	return ret ? ret.seq : 1;
+}
+
+
+if (Meteor.isClient) {
+	Meteor.subscribe('monkeys');
+	
+	Template.rankTable.monkeys = function () {
+		return Monkeys.find({}, {
+			limit: 10,
+			sort: {
+				score: -1,
+				date: -1
+			},
+		});
+	};
 }
 
 if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
+	Meteor.publish('monkeys', function() {
+		return Monkeys.find({}, {score:-1, limit: 50});
+	});
+	
+	Meteor.startup(function () {
+		if (Counters.find({_id: "monkey"}).count() === 0)
+			Counters.insert({_id: "monkey", seq: 1});
+	});
 }
