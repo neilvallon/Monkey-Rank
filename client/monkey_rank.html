@@ -2,6 +2,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Monkey Rank - Survival of the Fittest Tragedy</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	
+	<script src="/trainer.js"></script>
+	<script src="/monkey.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -10,7 +13,12 @@
 			<h3>May the best monkey win.</h3>
 			<h5>and the bodies of the rest be discarded promptly.</h5>
 		</div>
-		{{> rankTable}}
+		
+		<h3>Train a monkey</h3>
+		{{> monkeyForm}}
+		
+		<h3>Leaderboard</h3>
+		{{> leaderboard}}
 	</div>
 	
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>

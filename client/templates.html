@@ -1,0 +1,47 @@
+<template name="monkeyForm">
+		<div class="form-group">
+		  <label for="name">Name your monkey</label>
+		  <input type="text" class="form-control" id="name" placeholder="Clyde">
+		</div>
+		<button id="startMonkeys" class="btn btn-default">Run</button>
+	
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="raw">Monkey Babble</label>
+				<textarea id="raw" disabled="disabled"></textarea>
+			</div>
+		</div>
+		
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="best">Best Monkey</label>
+				<textarea id="best" disabled="disabled"></textarea>
+			</div>
+		</div>
+		
+	</div>
+</template>
+
+<template name="leaderboard">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Characters</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each monkeys}}
+				<tr>
+					<td>{{ number }}</td>
+					<td>{{ name }}</td>
+					<td>{{ score }}</td>
+					<td>{{ date }}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</template>
