@@ -24,6 +24,10 @@ Trainer.prototype.update = function(){
 	
 	if(this.monkey.correctKeys > this.best){
 		this.best = this.monkey.correctKeys;
+		
+		Meteor.call('updateMonkey', this.monkeyName, this.best, function(r) {
+			console.log(r);
+		});
 	}
 };
 
