@@ -131,14 +131,3 @@ Monkey.prototype.backspace = function(){
 Monkey.prototype.toString = function(){
 	return this.paper.map(function(ksp){ return ksp.key; }).join('');
 };
-
-
-
-
-// var rnd = uheprng();
-// var rnd2 = uheprng();
-// rnd.initState();
-// rnd2.initState();
-// //rnd.addEntropy();
-// console.log(rnd.string(256));
-// console.log(rnd2.string(256));
