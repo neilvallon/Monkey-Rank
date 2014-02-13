@@ -52,7 +52,12 @@ var Monkey = function(goal, errTolerance){
 	//
 	this.keyboard = qwerty;
 	this.caps = false;
+	
 	this.rng = uheprng();
+	this.rng.initState();
+	this.rng.addEntropy();
+	
+	this.lastState;
 };
 
 Monkey.prototype.correctChars = function(){
@@ -85,9 +90,9 @@ Monkey.prototype.getChar = function(keyboard, rng){
 };
 
 Monkey.prototype.typeChar = function(key){
-	this.paper.push(key);
+	this.paper.push({key: key, state: this.lastState});
 	
-	if(this.paper[this.correctKeys] == this.goal[this.correctKeys])
+	if(this.paper[this.correctKeys].key == this.goal[this.correctKeys])
 		this.correctKeys++;
 	
 	if((this.paper.length - this.correctKeys) > this.errTolerance){
@@ -97,6 +102,8 @@ Monkey.prototype.typeChar = function(key){
 };
 
 Monkey.prototype.pressKey = function(){
+	this.lastState = this.rng.getState();
+	
 	var rndChar = this.getChar(this.keyboard, this.rng);
 	rndChar = this.caps? rndChar.toUpperCase() : rndChar;
 	
@@ -122,7 +129,7 @@ Monkey.prototype.backspace = function(){
 };
 
 Monkey.prototype.toString = function(){
-	return this.paper.join('');
+	return this.paper.map(function(ksp){ return ksp.key; }).join('');
 };
 
 

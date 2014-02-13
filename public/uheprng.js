@@ -78,6 +78,22 @@ function uheprng() {
 			return (rawprng() + (rawprng() * 0x200000 | 0) * 1.1102230246251565e-16);
 		};
 		
+		// Get State
+		random.getState = function() {
+			return {
+				c: c,
+				p: p,
+				s: s.slice(0),
+			};
+		};
+		
+		// Set State
+		random.setState = function(state) {
+			c = state.c;
+			p = state.p;
+			s = state.s.slice(0);
+		};
+		
 
 		// this EXPORTED function 'string(n)' returns a pseudo-random string of
 		// 'n' printable characters ranging from chr(33) to chr(126) inclusive.

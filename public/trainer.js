@@ -25,7 +25,7 @@ Trainer.prototype.update = function(){
 	if(this.monkey.correctKeys > this.best){
 		this.best = this.monkey.correctKeys;
 		
-		Meteor.call('updateMonkey', this.monkeyName, this.best, function(r) {
+		Meteor.call('updateMonkey', this.monkeyName, this.best, this.monkey.paper[0].state, function(r) {
 			console.log(r);
 		});
 	}

@@ -17,10 +17,11 @@ Meteor.startup(function () {
 });
 
 Meteor.methods({
-	updateMonkey: function (name, score) {
+	updateMonkey: function (name, score, state) {
 		Monkeys.insert({
 			name: name,
 			score: score,
+			state: state,
 			number: getNextSequence("monkey"),
 			date: new Date,
 		});
