@@ -32,3 +32,19 @@ Template.leaderboard.monkeys = function () {
 		},
 	});
 };
+
+Template.leaderboard.rendered = function() {
+	$('.monkeyName').each(function(index) {
+		var tmp = $(this).text();
+		
+		if(tmp.match(/^@([a-zA-Z0-9_]{1,15})$/)) {
+			$(this).html(
+				$('<a>', {
+					text: tmp,
+					href: 'https://twitter.com/'+tmp,
+				})
+			);
+		}
+		
+	});
+};
