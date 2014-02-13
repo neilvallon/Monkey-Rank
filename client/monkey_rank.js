@@ -7,7 +7,7 @@ if (Meteor.isClient) {
 		"click #startMonkeys": function(event, template) {
 			var name = $("#name").val();
 			
-			Meteor.http.get("http://localhost:3000/hamlet.txt", function (error, result) {
+			Meteor.http.get("/hamlet.txt", function (error, result) {
 				var m = new Monkey(result.content, 50);
 				
 				var t = new Trainer(name, Monkeys.findOne({ name: name }), m );

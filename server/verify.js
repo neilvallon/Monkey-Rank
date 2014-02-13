@@ -1,9 +1,12 @@
 verifyState = function(state){
 	Future = Npm.require('fibers/future');
+	var fs = Npm.require('fs')
+	var path = Npm.require('path')
 	
 	var fut = new Future();
-	Meteor.http.get("http://localhost:3000/hamlet.txt", function (error, result) {
-		fut.return(result.content);
+	
+	fs.readFile(path.resolve('../client/app/hamlet.txt'), 'utf8', function(err, data) {
+		fut.return(data);
 	});
 	
 	var hamlet = fut.wait();
