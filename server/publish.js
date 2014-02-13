@@ -18,12 +18,21 @@ Meteor.startup(function () {
 
 Meteor.methods({
 	updateMonkey: function (name, score, state) {
-		Monkeys.insert({
-			name: name,
-			score: score,
-			state: state,
-			number: getNextSequence("monkey"),
-			date: new Date,
-		});
+		var monkey = Monkeys.findOne({ name: name });
+		
+		if(monkey === undefined) {
+			Monkeys.insert({
+				name: name,
+				score: score,
+				state: state,
+				number: getNextSequence("monkey"),
+				date: new Date,
+			});
+		} else if(score > monkey.score) {
+			monkey.score = score;
+			monkey.state = state;
+			monkey.date = new Date;
+			Monkeys.update({ name: name }, monkey);
+		}
 	}
 });
