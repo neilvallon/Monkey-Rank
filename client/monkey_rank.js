@@ -33,6 +33,10 @@ Template.leaderboard.monkeys = function () {
 	});
 };
 
+Handlebars.registerHelper("prettifyDate", function(date) {
+	return moment(date).fromNow();
+});
+
 Template.leaderboard.rendered = function() {
 	$('.monkeyName').each(function(index) {
 		var tmp = $(this).text();
