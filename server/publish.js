@@ -17,9 +17,11 @@ Meteor.startup(function () {
 });
 
 Meteor.methods({
-	updateMonkey: function (name, state) {
+	updateMonkey: function(name, givenScore, state) {
 		var monkey = Monkeys.findOne({ name: name });
-		var score = verifyState(state);
+		var verifyCnt = verifyState(state);
+		
+		var score = (givenScore < verifyCnt)? givenScore : verifyCnt;
 		
 		if(score === 0){
 			return "Sorry, could not verify score.";
