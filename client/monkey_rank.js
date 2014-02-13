@@ -7,6 +7,10 @@ if (Meteor.isClient) {
 		"click #startMonkeys": function(event, template) {
 			var name = $("#name").val();
 			
+			if(name.length === 0) {
+				return;
+			}
+			
 			Meteor.http.get("/hamlet.txt", function (error, result) {
 				var m = new Monkey(result.content, 50);
 				
