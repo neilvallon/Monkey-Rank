@@ -32,6 +32,7 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
+				<th>Rank</th>
 				<th>#</th>
 				<th>Name</th>
 				<th>Characters</th>
@@ -39,8 +40,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#each monkeys}}
+			{{#each rank monkeys}}
 				<tr>
+					<td>{{ index }}</td>
 					<td>{{ number }}</td>
 					<td class="monkeyName">{{ name }}</td>
 					<td>{{ score }}</td>

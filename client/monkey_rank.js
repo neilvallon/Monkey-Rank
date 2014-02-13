@@ -37,6 +37,14 @@ Handlebars.registerHelper("prettifyDate", function(date) {
 	return moment(date).fromNow();
 });
 
+Handlebars.registerHelper('rank', function(obj){
+	var i = 1;
+	return obj.map(function(doc){
+		doc.index = i++;
+		return doc;
+	});
+});
+
 Template.leaderboard.rendered = function() {
 	$('.monkeyName').each(function(index) {
 		var tmp = $(this).text();
