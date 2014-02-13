@@ -2,3 +2,7 @@ textarea {
 	width:100%;
 	height: 150px;
 }
+
+.jumbotron h1, .jumbotron h3, h6{
+	line-height:70%;
+}
