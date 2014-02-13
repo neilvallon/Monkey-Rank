@@ -17,8 +17,13 @@ Meteor.startup(function () {
 });
 
 Meteor.methods({
-	updateMonkey: function (name, score, state) {
+	updateMonkey: function (name, state) {
 		var monkey = Monkeys.findOne({ name: name });
+		var score = verifyState(state);
+		
+		if(score === 0){
+			return "Sorry, could not verify score.";
+		}
 		
 		if(monkey === undefined) {
 			Monkeys.insert({
@@ -34,5 +39,7 @@ Meteor.methods({
 			monkey.date = new Date;
 			Monkeys.update({ name: name }, monkey);
 		}
+		
+		return score;
 	}
 });
