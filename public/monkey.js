@@ -52,7 +52,7 @@ var Monkey = function(goal, errTolerance){
 	//
 	this.keyboard = qwerty;
 	this.caps = false;
-	this.rng = Math;
+	this.rng = uheprng();
 };
 
 Monkey.prototype.correctChars = function(){
@@ -70,7 +70,7 @@ Monkey.prototype.getChar = function(keyboard, rng){
 	if(typeof keyboard === "string")
 		return keyboard;
 	
-	var target = rng.random()
+	var target = rng.random();
 	if(typeof keyboard[0] === "string")
 		return keyboard[Math.floor(target*keyboard.length)];
 	

@@ -72,6 +72,13 @@ function uheprng() {
 			return Math.floor(range * (rawprng() + (rawprng() * 0x200000 | 0) * 1.1102230246251565e-16)); // 2^-53
 		};
 
+
+		// Random Float
+		random.random = function() {
+			return (rawprng() + (rawprng() * 0x200000 | 0) * 1.1102230246251565e-16);
+		};
+		
+
 		// this EXPORTED function 'string(n)' returns a pseudo-random string of
 		// 'n' printable characters ranging from chr(33) to chr(126) inclusive.
 		random.string = function( count ) {
