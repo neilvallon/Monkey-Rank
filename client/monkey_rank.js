@@ -8,7 +8,10 @@ if (Meteor.isClient) {
 			var name = $("#name").val();
 			
 			if(name.length === 0) {
+				$('#nameGroup').addClass("has-error");
 				return;
+			} else {
+				$('#nameGroup').removeClass("has-error");
 			}
 			
 			Meteor.http.get("/hamlet.txt", function (error, result) {
